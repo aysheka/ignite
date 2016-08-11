@@ -110,6 +110,16 @@ public class GridCachePartitionedConcurrentMap implements GridCacheConcurrentMap
     }
 
     /** {@inheritDoc} */
+    @Override public long memorySize() {
+        long size = 0;
+
+        for (GridDhtLocalPartition part : ctx.topology().currentLocalPartitions())
+            size += part.memorySize();
+
+        return size;
+    }
+
+    /** {@inheritDoc} */
     @Override public void incrementPublicSize(GridCacheEntryEx e) {
         localPartition(e.key(), AffinityTopologyVersion.NONE, true).incrementPublicSize(e);
     }

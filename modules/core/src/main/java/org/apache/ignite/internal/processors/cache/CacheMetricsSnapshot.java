@@ -137,6 +137,9 @@ public class CacheMetricsSnapshot implements CacheMetrics, Externalizable {
     /** Number of keys in the cache, possibly with {@code null} values. */
     private int keySize;
 
+    /** Cache size in bytes. */
+    private long memorySize;
+
     /** Cache is empty. */
     private boolean isEmpty;
 
@@ -286,6 +289,7 @@ public class CacheMetricsSnapshot implements CacheMetrics, Externalizable {
 
         size = m.getSize();
         keySize = m.getKeySize();
+        memorySize = m.memorySize();
         isEmpty = m.isEmpty();
         dhtEvictQueueCurrSize = m.getDhtEvictQueueCurrentSize();
         txThreadMapSize = m.getTxThreadMapSize();
@@ -338,6 +342,7 @@ public class CacheMetricsSnapshot implements CacheMetrics, Externalizable {
         writeBehindBufSize = loc.getWriteBehindBufferSize();
         size = loc.getSize();
         keySize = loc.getKeySize();
+        memorySize = loc.memorySize();
 
         keyType = loc.getKeyType();
         valType = loc.getValueType();
@@ -388,6 +393,8 @@ public class CacheMetricsSnapshot implements CacheMetrics, Externalizable {
             swapMisses += e.getSwapMisses();
             swapEntriesCnt += e.getSwapEntriesCount();
             swapSize += e.getSwapSize();
+
+            memorySize += e.memorySize();
 
             if (e.getDhtEvictQueueCurrentSize() > -1)
                 dhtEvictQueueCurrSize += e.getDhtEvictQueueCurrentSize();
@@ -684,6 +691,11 @@ public class CacheMetricsSnapshot implements CacheMetrics, Externalizable {
     /** {@inheritDoc} */
     @Override public int getKeySize() {
         return keySize;
+    }
+
+    /** {@inheritDoc} */
+    @Override public long memorySize() {
+        return memorySize;
     }
 
     /** {@inheritDoc} */

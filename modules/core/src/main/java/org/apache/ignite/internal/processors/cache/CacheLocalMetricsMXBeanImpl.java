@@ -169,6 +169,11 @@ class CacheLocalMetricsMXBeanImpl implements CacheMetricsMXBean {
     }
 
     /** {@inheritDoc} */
+    @Override public long memorySize() {
+        return cache.metrics0().memorySize();
+    }
+
+    /** {@inheritDoc} */
     @Override public boolean isEmpty() {
         return cache.metrics0().isEmpty();
     }

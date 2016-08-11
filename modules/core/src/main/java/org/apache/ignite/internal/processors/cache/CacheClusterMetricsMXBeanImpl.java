@@ -169,6 +169,11 @@ class CacheClusterMetricsMXBeanImpl implements CacheMetricsMXBean {
     }
 
     /** {@inheritDoc} */
+    @Override public long memorySize() {
+        return cache.clusterMetrics().memorySize();
+    }
+
+    /** {@inheritDoc} */
     @Override public boolean isEmpty() {
         return cache.clusterMetrics().isEmpty();
     }

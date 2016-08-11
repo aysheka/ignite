@@ -1652,6 +1652,18 @@ public class GridCacheProxyImpl<K, V> implements IgniteInternalCache<K, V>, Exte
     }
 
     /** {@inheritDoc} */
+    @Override public long memorySize() {
+        CacheOperationContext prev = gate.enter(opCtx);
+
+        try {
+            return delegate.memorySize();
+        }
+        finally {
+            gate.leave(prev);
+        }
+    }
+
+    /** {@inheritDoc} */
     @Override public Iterator<Cache.Entry<K, V>> iterator() {
         CacheOperationContext prev = gate.enter(opCtx);
 

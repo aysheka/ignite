@@ -4251,6 +4251,11 @@ public abstract class GridCacheAdapter<K, V> implements IgniteInternalCache<K, V
         return ctx.swap().swapKeys();
     }
 
+    /** {@inheritDoc} */
+    @Override public long memorySize() {
+        return map.memorySize();
+    }
+
     /**
      * Asynchronously commits transaction after all previous asynchronous operations are completed.
      *

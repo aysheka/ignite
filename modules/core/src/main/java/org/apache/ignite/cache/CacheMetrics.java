@@ -321,6 +321,13 @@ public interface CacheMetrics {
     public int getKeySize();
 
     /**
+     * Gets cache size in bytes.
+     *
+     * @return cache size in bytes.
+     */
+    public long memorySize();
+
+    /**
      * Returns {@code true} if this cache is empty.
      *
      * @return {@code True} if this cache is empty.

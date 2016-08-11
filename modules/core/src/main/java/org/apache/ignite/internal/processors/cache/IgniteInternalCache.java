@@ -1640,6 +1640,14 @@ public interface IgniteInternalCache<K, V> extends Iterable<Cache.Entry<K, V>> {
      */
     public long swapKeys() throws IgniteCheckedException;
 
+
+    /**
+     * Gets cache size in bytes.
+     *
+     * @return cache size in bytes.
+     */
+    public long memorySize();
+
     /**
      * Forces this cache node to re-balance its partitions. This method is usually used when
      * {@link CacheConfiguration#getRebalanceDelay()} configuration parameter has non-zero value.

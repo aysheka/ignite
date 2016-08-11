@@ -74,6 +74,13 @@ public interface GridCacheConcurrentMap {
     public int publicSize();
 
     /**
+     * Gets current cache size in bytes.
+     *
+     * @return current cache size in bytes.
+     */
+    public long memorySize();
+
+    /**
      * Increments public size.
      *
      * @param e Entry that caused public size change.

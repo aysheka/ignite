@@ -71,6 +71,11 @@ public class GridNoStorageCacheMap implements GridCacheConcurrentMap {
     }
 
     /** {@inheritDoc} */
+    @Override public long memorySize() {
+        return 0;
+    }
+
+    /** {@inheritDoc} */
     @Override public void incrementPublicSize(GridCacheEntryEx e) {
         // No-op.
     }

@@ -331,6 +331,13 @@ public class CacheMetricsImpl implements CacheMetrics {
     }
 
     /** {@inheritDoc} */
+    @Override public long memorySize() {
+        GridCacheAdapter<?, ?> cache = cctx.cache();
+
+        return cache != null ? cctx.cache().memorySize() : 0;
+    }
+
+    /** {@inheritDoc} */
     @Override public boolean isEmpty() {
         GridCacheAdapter<?, ?> cache = cctx.cache();
 
